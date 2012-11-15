@@ -80,36 +80,11 @@
           <div class="modal-body">
             <div class="tabbable">
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#log-in" data-toggle="tab">Login</a></li>
-                <li><a href="#register" data-toggle="tab">Register</a></li>
+                <li class="active"><a href="#register" data-toggle="tab">Register</a></li>
+                <li><a href="#log-in" data-toggle="tab">Login</a></li>
               </ul>
               <div class="tab-content">
-                <div class="tab-pane active" id="log-in">
-                  <p>Fill in the following fields to log in to your account</p>
-                  <form class="form-horizontal" id='form-login'>
-                    <div class="control-group">
-                      <label class="control-label" for="inputEmail">Email</label>
-                      <div class="controls">
-                        <input type="text" id="inputEmail" placeholder="joe@schmoe.com">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" for="inputPassword">Password</label>
-                      <div class="controls">
-                        <input type="password" id="inputPassword" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <div class="controls">
-                        <label class="checkbox">
-                          <input type="checkbox"> Remember me
-                        </label>
-                        <button type="submit" class="btn">Sign in</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="tab-pane" id="register">
+                <div class="tab-pane active" id="register">
                   <p>Fill in the following fields to set up your account</p>
                   <form class="form-horizontal" id='form-register'>
                     <div class="control-group">
@@ -145,6 +120,31 @@
                     <div class="control-group">
                       <div class="controls">
                         <button type="submit" class="btn">Register</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane" id="log-in">
+                  <p>Fill in the following fields to log in to your account</p>
+                  <form class="form-horizontal" id='form-login'>
+                    <div class="control-group">
+                      <label class="control-label" for="inputEmail">Email</label>
+                      <div class="controls">
+                        <input type="text" id="inputEmail" placeholder="joe@schmoe.com">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="inputPassword">Password</label>
+                      <div class="controls">
+                        <input type="password" id="inputPassword" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <label class="checkbox">
+                          <input type="checkbox"> Remember me
+                        </label>
+                        <button type="submit" class="btn">Sign in</button>
                       </div>
                     </div>
                   </form>
@@ -238,12 +238,6 @@
                     <form class="form-horizontal">
                       <h4>Ad Information</h4>
                       <div class="control-group">
-                        <label class="control-label" for="inputText">Text</label>
-                        <div class="controls">
-                          <input  class='span5 inputText' type="text" id="inputText" name='inputText' placeholder="Joe's Pizza">
-                        </div>
-                      </div>
-                      <div class="control-group">
                         <label class="control-label" for="inputLandingPage">Landing Page</label>
                         <div class="controls">
                           <input  class='span5 inputLandingPage' type="text" id="inputLandingPage" name='inputLandingPage' placeholder="Enter a url...">
@@ -277,6 +271,14 @@
                             <option>Age - 55 - 64</option>
                             <option>Age - 64 +</option>
                           </select>                  
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <label class="control-label" for="inputSafe">Brand Saftey</label>
+                        <div class="controls">
+                          <label class="checkbox" checked='checked'>
+                            <input type="checkbox"> Only show to verified safe sites
+                          </label>
                         </div>
                       </div>
                       <div class="control-group">

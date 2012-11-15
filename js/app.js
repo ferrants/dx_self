@@ -77,6 +77,12 @@ stock_images = [
 		add_images([url], false);
 		stock_images.push(url);
 	});
+
+  $('#set-up').on('hide', function(){
+    if (dm.data.credit === 0){
+      $('#add-value').modal();
+    }
+  });
    };
   
   	var add_images = function(image_list, clear_first){
@@ -166,7 +172,7 @@ stock_images = [
      });
 	setTimeout(function(){
       var seriesData = [];
-      for (var i = 0 ; i < 300 ; i++){
+      for (var i = 0 ; i < 120 ; i++){
         seriesData.push({x:i * 3600, y: (0.60 + ((Math.random() - 0.5) / 2))});
       }
 
@@ -185,12 +191,12 @@ stock_images = [
       graph.render();
 
       var time = new Rickshaw.Fixtures.Time();
-      var hours = time.unit('hour');
+      var days = time.unit('day');
 
 
       var hoverDetail = new Rickshaw.Graph.HoverDetail( {
           graph: graph,
-          xFormatter: function(x) { return Date.today().add(x).minutes().toString("HH:mm"); },
+          xFormatter: function(x) { return Date.today().add(x).minutes().toString("M/d/yyyy HH:mm"); },
           yFormatter: function(y) { return (y).toFixed(2) + " CPM"; }
       } );
 
@@ -202,7 +208,7 @@ stock_images = [
 
       var xAxis = new Rickshaw.Graph.Axis.Time({
           graph: graph,
-          timeUnit: hours
+          timeUnit: days
       });
 
       xAxis.render();
@@ -220,7 +226,7 @@ stock_images = [
           $(this).addClass('btn-success');
         }
       }else{
-        alert('Please log in and add value to your account');
+        $('#set-up').modal();
       }
 
     });
