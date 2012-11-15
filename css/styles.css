@@ -60,6 +60,12 @@
 .align-left{
   text-align: left;
 }
+.media .dx-min-creative{
+  display: none;
+}
+.media.open .dx-min-creative{
+  display: inline;
+}
 
 /*  Rickshaw  */
 .rickshaw_graph .detail {
