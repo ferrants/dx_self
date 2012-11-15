@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DX Self-Service</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class='container'>
+      <div class="row">
+        <div class="span4">
+            <img src='http://advertisers.dataxu.com/images/logo.png'/>
+        </div>
+        <div class='span2 offset6'>
+          <a href="#set-up" role="button" class="btn pull-right" data-toggle="modal">Login / Register</a>
+        </div>
+      </div>
+      <div id='auth-bar' class="navbar hide">
+        <div class="navbar-inner">
+          <a class="brand" href="#">Joe's Pizza</a>
+          <a href="#add-value" role="button" class="btn pull-right" data-toggle="modal">Add Value</a>
+          <ul class="nav pull-right">
+            <li><a href="#"><strong>Impressions: </strong><span class='value-impressions'>0</span></a></li>
+            <li><a href="#"><strong>Spent: </strong>$<span class='value-spent'>0</span></a></li>
+            <li><a href="#"><strong>Credit: </strong>$<span class='value-credit'>0</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div id='add-value' class='hide modal fade'>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Add Value to Account</h3>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id='form-value'>
+              <div class="control-group">
+                <label class="control-label" for="inputName">Name on Card</label>
+                <div class="controls">
+                  <input type="text" id="inputName" placeholder="Joe Schmoe">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputCCN">Credit Card#</label>
+                <div class="controls">
+                  <input type="text" id="inputCCN" placeholder="12345678901234">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputSecurity">Security Code</label>
+                <div class="controls">
+                  <input type="text" class='input-mini' id="inputSecurity" placeholder="123">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputAmount">Amount to Add</label>
+                <div class="controls">
+                  <div class="input-prepend">
+                    <span class="add-on fix-1-up">$</span>
+                    <input class="span2" id="inputAmount" name='inputAmount' type="text" placeholder="0.00">
+                  </div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="submit" class="btn">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+          </div>
+      </div>
+      <div id='set-up' class='hide modal fade'>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Log In</h3>
+          </div>
+          <div class="modal-body">
+            <div class="tabbable">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#log-in" data-toggle="tab">Login</a></li>
+                <li><a href="#register" data-toggle="tab">Register</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="log-in">
+                  <p>Fill in the following fields to log in to your account</p>
+                  <form class="form-horizontal" id='form-login'>
+                    <div class="control-group">
+                      <label class="control-label" for="inputEmail">Email</label>
+                      <div class="controls">
+                        <input type="text" id="inputEmail" placeholder="joe@schmoe.com">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="inputPassword">Password</label>
+                      <div class="controls">
+                        <input type="password" id="inputPassword" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <label class="checkbox">
+                          <input type="checkbox"> Remember me
+                        </label>
+                        <button type="submit" class="btn">Sign in</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane" id="register">
+                  <p>Fill in the following fields to set up your account</p>
+                  <form class="form-horizontal" id='form-register'>
+                    <div class="control-group">
+                      <label class="control-label" for="inputName">Business Name</label>
+                      <div class="controls">
+                        <input type="text" id="inputName" name='inputName' placeholder="Joe's Pizza">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="inputEmail">Email</label>
+                      <div class="controls">
+                        <input type="text" id="inputEmail" placeholder="joe@schmoe.com">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="inputPassword">Password</label>
+                      <div class="controls">
+                        <input type="password" id="inputPassword" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="inputPassword">Repeat Password</label>
+                      <div class="controls">
+                        <input type="password" id="inputPassword" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <button type="submit" class="btn">Register</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+          </div>
+      </div>
+      <div id='new-ad' class='hide modal fade'>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Choose an image for an ad</h3>
+          </div>
+          <div class="modal-body">
+            <ul class="thumbnails">
+                <li class="span3 col1">
+
+                </li>
+                <li class="span3 col2">
+
+                </li>
+                <li class="span3 col3">
+
+                </li>
+              </ul>
+              <h3>Or upload your own</h3>
+              <div class="input-prepend">
+                <span class="add-on"><i class='icon-file'></i></span>
+                <input class="span2" id="prependedInput" type="text" placeholder="Choose a file...">
+                <button type="submit" class="btn"><i class='icon-arrow-up'></i>Upload</button>
+              </div>
+
+
+            </div>
+          <div class="modal-footer">
+            <h5 class='pull-right'>Step 1 of 3</h5>
+            <div class='clearfix'></div>
+            <div class="progress progress-striped active">
+              <div class="bar" style="width: 50%;"></div>
+            </div>
+            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+          </div>
+        
+        </div>
+
+        <a href="#new-ad" role="button" class="btn pull-right" data-toggle="modal">New Ad</a>
+
+        <div class=''>
+          <div class='row header'>
+            <div class='span4'>
+              Ad
+            </div>
+            <div class='span2'>
+              Impressions
+            </div>
+            <div class='span2'>
+              Clicks
+            </div>
+            <div class='span2'>
+              Spent
+            </div>
+          </div>
+          <div id='creative-table'>
+            <div class='media hide dx-creative-row template'>
+              <div class='pull-left'>
+                <a href="#" class="media-object thumbnail">
+                  <img class='creative-img' src="http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg" alt="">
+                </a>
+              </div>
+              <div class='media-body'>
+                <div class='row dx-data-points'>
+                  <div class='span2 value-creative-impressions'>
+                    0
+                  </div>
+                  <div class='span2 value-creative-clicks'>
+                    0
+                  </div>
+                  <div class='span2 value-creative-spent'>
+                    $0
+                  </div>
+                  <div class='span1'>
+                  </div>
+                  <div class='span1'>
+                    <button class='btn pull-right dx-start-creative'><i class='icon-play'></i></button>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='span8'>
+                    <h4>Targeting</h4>
+                    <form class="form-horizontal">
+                      <div class="control-group">
+                        <label class="control-label" for="inputLocation">Locations</label>
+                        <div class="controls">
+                          <input  class='span5' type="text" id="inputLocation" placeholder="Enter zip codes separated by commas...">
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <label class="control-label" for="inputType">Type</label>
+                        <div class="controls">
+                          <select class='span5' id='inputType' multiple="multiple">
+                            <option value="0O8DdxWc72">Downloadable Application</option><option value="0O95ALWUXW">Automotives &amp; Auto-Related Peripherals and Services</option><option value="0Ou15WLHpT">Beauty &amp; Hygiene</option><option value="0Oo6rDojGB">Blogging software</option><option value="0O5Cx4Yjut">Business</option><option value="0OL2Tq2SJ7">Computer Hardware (Not Software)</option><option value="0OJmNoVHxt">Cosmetic Medical Services</option><option value="0OM1al5z1j">Credit Card Offers</option><option value="0OaAfxfclv">Culture &amp; Leisure Activities</option><option value="0OKSIYQdTH">Currency Trading</option><option value="0O9Wb7OnxJ">Dating</option><option value="0OI4D8x6S8">Downloads</option><option value="0O6KOyyyib">Drugs - Prescription/OTC</option><option value="0OPf5PI3pe">Education</option><option value="0OkfnCZT2D">Electronic Retailers and Manufacturers</option><option value="0OCwCEe5K6">Employment</option><option value="0OcxmJ4cHk">Energy</option><option value="0OJ8wTnLCX">Entertainment</option><option value="0OlO0IpTeP">Finance</option><option value="0OJ9R84bAP">Fitness</option><option value="0OKizdF0mD">Food &amp; Beverage</option><option value="0OA99uuevL">Gambling (Bricks-and-Mortar Casino or Hotel Casino)</option><option value="0OacQUXSDH">Gaming</option><option value="0OEbw1vOoL">Gaming (download required)</option><option value="0OCyOdv2Oq">Health</option><option value="0OYfvHziCt">Home</option><option value="0OzIBjmopk">Horoscopes</option><option value="0OhqrzjQI3">Instant Messaging</option><option value="0OH0IYfuf8">Insurance</option><option value="0ON2uEZV8M">Internet</option><option value="0Otdeypzva">ISP</option><option value="0OG8hUMbSb">Mobile Downloads</option><option value="0Oj4sPwsC4">Money Making Offer</option><option value="0OnZHGV9aI">National Lottery, [Government] Sponsored Lottery</option><option value="0O9pP0oRwK">Personal Loans and Savings/Transactions</option><option value="0OxkNJBr7T">Politics</option><option value="0Os4tjGWJQ">Public Service</option><option value="0OMStqiwUr">Ringtone</option><option value="0OVrjEHvlL">Service</option><option value="0OaloKenzR">Shopping</option><option value="0OnZqXeNNM">Social Network</option><option value="0OEbtL3UUm">Software (Not Free Download)</option><option value="0OoBBYYEcn">Sports</option><option value="0OupmIIwH7">Survey</option><option value="0OK7A9Taeo">Survey Pop</option><option value="0OCKxZS9wh">Technology</option><option value="0OkgbMql6a">Telephone</option><option value="0OHJfHexEG">Travel</option><option value="0Ocp4vOaLp">VOIP</option><option value="0OGjq7isH7">Weight Loss</option>
+                          </select>                  
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <label class="control-label" for="inputIndustry">Demographics</label>
+                        <div class="controls">
+                          <select  class='span5'  id='inputIndustry'>
+                            <option>All</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                          </select>                  
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <div class="controls">
+                          <button type="submit" class="btn pull-right">Save</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='span8'>
+                    <h4>Performance</h4>
+                    <img src="http://placehold.it/620x100" alt="">
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+#new-ad{
+  width: 745px;
+  margin-left: -372px;
+}
+.row.header{
+  font-size: 1.4em;
+  text-align: center;
+  border-bottom: 3px inset #888;
+  margin: 0;
+}
+.media{
+  height: 80px;
+  margin-bottom: 8px;
+  border-bottom: 3px inset #888;
+}
+.media.open{
+  height: auto;
+}
+.media:hover{
+  background: #f0f0ff;
+  cursor: pointer;
+}
+.media.open:hover{
+  background: none;
+  cursor: default;
+}
+.media-object.thumbnail{
+  width: 300px;
+}
+.dx-data-points{
+  text-align: center;
+  padding: 30px 0;
+}
+.dx-data-points .span2{
+  font-size: 1.8em;
+  color: #555;
+}
+.fix-1-up{
+  margin-top: -1px;
+}
+#new-ad .thumbnail{
+  margin-bottom: 15px;
+}
