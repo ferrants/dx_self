@@ -23,11 +23,20 @@ dm = {
 };
 
 stock_images = [
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
+  'http://tech4globe.com/wp-content/uploads/2012/03/helmet-camera4.jpg',
+  'http://prtl.uhcl.edu/portal/pls/portal/docs/1/2141239.JPG',
+  'http://cutexu.mobi/photos/photo4.jpg',
+  'http://cutexu.mobi/photos/photo5.jpg',
+  'http://cdn2.business2community.com/wp-content/uploads/2012/09/travel31.jpg',
   'http://ads.w55c.net/t/d/0_U8iHPAVH.jpg',
+  'http://newsdepo.webatu.com/wp-content/uploads/2011/12/travel.jpg',
 	'http://www.lamppost-backstreet.com/Pepperoni_Pizza.jpg',
-	'http://villalucias.com/images/g-081126-hlt-pizza-1111a.grid-6x2.jpg'
+	'http://villalucias.com/images/g-081126-hlt-pizza-1111a.grid-6x2.jpg',
+  'http://www.ifun4free.com/Wallpaper/Images/Drinks/DRINKS_004-hi.jpg',
+  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
+  'http://www.ifun4free.com/Wallpaper/Images/Drinks/DRINKS_001-lo.jpg',
+  'http://cdn.iphonehacks.com/wp-content/uploads/2012/09/iphone5-front-back.jpg',
+  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg'
 ];
 
 (function($){
@@ -83,6 +92,7 @@ stock_images = [
       $('#add-value').modal();
     }
   });
+
    };
   
   	var add_images = function(image_list, clear_first){
@@ -230,6 +240,14 @@ stock_images = [
       }
 
     });
+
+        $('.inputEndDate').datepicker({
+          onSelect: function(text){
+            $('.inputEndDate', temp).val(text);
+          },
+          minDate: 0
+        });
+
     dm.creatives[id] = {id: id, src: img_src, spent: 0, impressions: 0, clicks: 0, status: false};
    };
 

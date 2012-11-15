@@ -57,6 +57,9 @@
 .performance-graph{
   margin-bottom: 12px;
 }
+.align-left{
+  text-align: left;
+}
 
 /*  Rickshaw  */
 .rickshaw_graph .detail {
