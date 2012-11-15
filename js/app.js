@@ -49,9 +49,13 @@ stock_images = [
      $('#form-register').submit(function(e){
       var name = $('input[name=inputName]', this).val();
       var email = $('input[name=inputEmail]', this).val();
+      var website = $('input[name=inputSite]', this).val();
       dm.logged_in = true;
       dm.bio.name = name;
       dm.bio.email = email;
+      dm.bio.website = website;
+      $('.creative-img').parent('a').attr({'href': dm.bio.website, 'target': '_blank'});
+      $('.inputLandingPage').val(dm.bio.website);
       $('#set-up').modal('hide');
       refresh_ui();
      });
@@ -153,22 +157,58 @@ stock_images = [
     $(temp).removeClass('hide template');
     $(temp).attr('id', id);
     $('.creative-img', temp).attr({src: img_src});
+    $('.creative-img', temp).parent('a').attr({'href': dm.bio.website, 'target': '_blank'});
     $(temp).appendTo('#creative-table').click(function(){
        if (!$(this).hasClass('open')){
          $('.media').removeClass('open');
          $(this).addClass('open');
        }
      });
-	
-	var graph = new Rickshaw.Graph({
-	    series: [{ 
-			data: [{ x: 0, y: 2 }, { x: 1, y: 4 }, { x: 2, y: 5 }, { x: 3, y: 8 }, { x: 4, y: 7 }, { x: 5, y: 9 } ],
-			color: 'steelblue'
-			}],
-	    renderer: 'line',
-	    element: document.querySelector('#'+ id +' .performance-graph')
-	});
-	graph.render();
+	setTimeout(function(){
+      var seriesData = [];
+      for (var i = 0 ; i < 300 ; i++){
+        seriesData.push({x:i * 3600, y: (0.60 + ((Math.random() - 0.5) / 2))});
+      }
+
+      var graph = new Rickshaw.Graph({
+          series: [{
+            data: seriesData,
+            color: 'steelblue',
+            name: "CPM"
+          }],
+          renderer: 'line',
+          width: 620,
+          height: 150,
+          element: document.querySelector('#'+ id +' .performance-graph')
+      });
+
+      graph.render();
+
+      var time = new Rickshaw.Fixtures.Time();
+      var hours = time.unit('hour');
+
+
+      var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+          graph: graph,
+          xFormatter: function(x) { return Date.today().add(x).minutes().toString("HH:mm"); },
+          yFormatter: function(y) { return (y).toFixed(2) + " CPM"; }
+      } );
+
+      var yAxis = new Rickshaw.Graph.Axis.Y({
+          graph: graph
+      });
+
+      yAxis.render();
+
+      var xAxis = new Rickshaw.Graph.Axis.Time({
+          graph: graph,
+          timeUnit: hours
+      });
+
+      xAxis.render();
+
+  }, 500);
+
     $('.dx-start-creative', temp).click(function(e){
       e.stopPropagation();
       if (dm.logged_in === true && dm.data.credit > 0){
