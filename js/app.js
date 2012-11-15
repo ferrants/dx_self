@@ -26,22 +26,8 @@ stock_images = [
   'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
   'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
   'http://ads.w55c.net/t/d/0_U8iHPAVH.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
-  'http://ads.w55c.net/t/d/0_U8iHPAVH.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
-  'http://ads.w55c.net/t/d/0_U8iHPAVH.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg',
-  'http://ads.w55c.net/t/d/0_Y9n4cdcS.jpg',
-  'http://ads.w55c.net/t/d/0_XoAvVfh3.jpg'
+	'http://www.lamppost-backstreet.com/Pepperoni_Pizza.jpg',
+	'http://villalucias.com/images/g-081126-hlt-pizza-1111a.grid-6x2.jpg'
 ];
 
 (function($){
@@ -79,57 +65,69 @@ stock_images = [
      });
 
      $('#new-ad').on('show', function(){
-      var cols = [$('#new-ad .col1'), $('#new-ad .col2'), $('#new-ad .col3')];
-
-      var get_shortest = function(){
-        var hit = 0;
-        var i = 0;
-        var selected = cols[0];
-        var min = $(selected).height();
-        if (min === 0){
-          return selected;
-        }
-
-        while (hit < 3){
-          e_i = i % cols.length;
-          hit++;
-          i++;
-          var height = $(cols[e_i]).height();
-          if ( height < min){
-            selected = cols[e_i];
-            min = height;
-            hit = 0;
-          }
-        }
-        return selected;
-
-      };
-      var i = 0;
-      var interval;
-      var add_img = function(){
-        if (i < stock_images.length){
-          $("<a href='#' class='thumbnail'><img src='"+ stock_images[i] +"'/></a>").appendTo(get_shortest()).click(function(){
-            var img = $('img', this).attr('src');
-            set_up_creative(img);
-            $('#new-ad .span3').empty();
-            $('#new-ad').modal('hide');
-            return false;
-          });
-        }else{
-          clearInterval(interval);
-        }
-        i++;
-      };
-      interval = setInterval(add_img, 100);
+		add_images(stock_images, true);
     });
+
+	$('#add-image').submit(function(e){
+		var url = $('input[name=inputURL]').val();
+		add_images([url], false);
+		stock_images.push(url);
+	});
    };
+  
+  	var add_images = function(image_list, clear_first){
+		var cols = [$('#new-ad .col1'), $('#new-ad .col2'), $('#new-ad .col3')];
+		if (clear_first === true){
+			$('#new-ad .span3').empty();
+		}
+
+		var get_shortest = function(){
+		  var hit = 0;
+		  var i = 0;
+		  var selected = cols[0];
+		  var min = $(selected).height();
+		  if (min === 0){
+		    return selected;
+		  }
+
+		  while (hit < 3){
+		    e_i = i % cols.length;
+		    hit++;
+		    i++;
+		    var height = $(cols[e_i]).height();
+		    if ( height < min){
+		      selected = cols[e_i];
+		      min = height;
+		      hit = 0;
+		    }
+		  }
+		  return selected;
+		};
+		var i = 0;
+		var interval;
+		var add_img = function(){
+		  if (i < image_list.length){
+		    $("<a href='#' class='thumbnail'><img src='"+ image_list[i] +"'/></a>").appendTo(get_shortest()).click(function(){
+		      var img = $('img', this).attr('src');
+		      set_up_creative(img);
+		      $('#new-ad .span3').empty();
+		      $('#new-ad').modal('hide');
+		      return false;
+		    });
+		  }else{
+		    clearInterval(interval);
+		  }
+		  i++;
+		};
+		interval = setInterval(add_img, 100);
+	};
 
    var show_creative_prompt = function(){
     $('#new-ad').modal();
    };
 
    var has_content = function(){
-    return true;
+    return Object.keys(dm.creatives).length > 0;
    };
 
    var refresh_ui = function(){
@@ -161,6 +159,16 @@ stock_images = [
          $(this).addClass('open');
        }
      });
+	
+	var graph = new Rickshaw.Graph({
+	    series: [{ 
+			data: [{ x: 0, y: 2 }, { x: 1, y: 4 }, { x: 2, y: 5 }, { x: 3, y: 8 }, { x: 4, y: 7 }, { x: 5, y: 9 } ],
+			color: 'steelblue'
+			}],
+	    renderer: 'line',
+	    element: document.querySelector('#'+ id +' .performance-graph')
+	});
+	graph.render();
     $('.dx-start-creative', temp).click(function(e){
       e.stopPropagation();
       if (dm.logged_in === true && dm.data.credit > 0){
@@ -186,8 +194,8 @@ stock_images = [
         var creative = dm.creatives[i];
         if (creative.status === true){
           var creative_elem = $('#' + creative.id);
-          var spend_amount = Math.random();
-          var impressions = 100 + spend_amount * 12;
+		  var impressions = parseInt(Math.random() * 3, 10);
+          var spend_amount = impressions * (.0060 + (Math.random() - 0.5) / 200);
           var clicks = 0;
           if (Math.random() > 0.8){
             clicks = 1;

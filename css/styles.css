@@ -10,7 +10,8 @@
 }
 .media{
   height: 80px;
-  margin-bottom: 8px;
+  margin-top: 0;
+  padding-top: 8px;
   border-bottom: 3px inset #888;
 }
 .media.open{
@@ -40,4 +41,10 @@
 }
 #new-ad .thumbnail{
   margin-bottom: 15px;
+}
+.btn{
+	font-size: 14px;
+}
+#creative-table{
+	margin-bottom: 50px;
 }
