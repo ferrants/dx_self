@@ -24,6 +24,8 @@ dm = {
 
 stock_images = [
     'http://tech4globe.com/wp-content/uploads/2012/03/helmet-camera4.jpg',
+    'http://static.wix.com/media/4e05b3_26ac4d858f8b03c3a8f35263f5dbcc83.jpg',
+    'http://corleonispizzalexington.com/design-specific/italian/images/slideshow/pizzapic2.png',
     'http://prtl.uhcl.edu/portal/pls/portal/docs/1/2141239.JPG',
     'http://cutexu.mobi/photos/photo4.jpg',
     'http://cutexu.mobi/photos/photo5.jpg',
@@ -158,7 +160,6 @@ stock_images = [
             $('#auth-bar').show();
             $('#auth-bar .brand').text(dm.bio.name);
             refresh_interval = setInterval(function () {
-                console.log(dm.data);
                 $('.value-impressions').text(parseInt(dm.data.impressions, 10));
                 $('.value-spent').text((dm.data.spent).toFixed(2));
                 $('.value-credit').text((dm.data.credit).toFixed(2));
@@ -244,7 +245,6 @@ stock_images = [
       if (seriesData.length === 0){
         seriesData.push({x:0,y:0});
       }
-      console.log(seriesData);
       $('#' + id + ' .performance-graph').empty();
       var graph = new Rickshaw.Graph({
           series: [{
@@ -304,7 +304,7 @@ stock_images = [
                     creative.impressions += parseInt(impressions, 10);
                     creative.spent += spend_amount;
                     creative.clicks += clicks;
-                    creative.data.push(spend_amount);
+                    creative.data.push(spend_amount * 100);
                     show_graph(creative.id, creative.data);
                     $('.value-creative-impressions', creative_elem).text(creative.impressions);
                     $('.value-creative-spent', creative_elem).text((creative.spent).toFixed(2));
@@ -312,7 +312,6 @@ stock_images = [
                     dm.data.credit = dm.data.credit - spend_amount;
                     dm.data.impressions = dm.data.impressions + impressions;
                     dm.data.spent = dm.data.spent + spend_amount;
-                    console.log('spend');
                 }
             }
         } else {
